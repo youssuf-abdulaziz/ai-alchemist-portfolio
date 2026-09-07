@@ -1,110 +1,68 @@
 "use client"
 
-import type { CSSProperties } from "react"
-
-import { contact, experience } from "@/core/profile"
-import { useReveal, useRevealContainer } from "@/hooks/use-reveal"
-import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons"
+import { SectionMarker } from "@/components/section-marker"
+import { useReveal } from "@/hooks/use-reveal"
 
 export function About() {
   const quoteRef = useReveal<HTMLDivElement>()
-  const bodyRef = useReveal<HTMLDivElement>()
-  const timelineRef = useRevealContainer<HTMLDivElement>()
+  const narrativeRef = useReveal<HTMLDivElement>()
 
   return (
-    <section id="about" className="relative py-28 sm:py-36">
-      <div className="mx-auto grid w-full max-w-screen-lg grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-0">
-        <div ref={quoteRef} className="reveal lg:pr-10">
-          <p className="font-mono text-[11px] tracking-[0.2em] text-[#7b61ff] uppercase">
-            <span className="text-[#4a4866]">01</span> About
-          </p>
-          <p className="mt-6 font-display text-3xl leading-[1.25] font-bold tracking-[-0.01em] text-[#f0eef8] sm:text-4xl">
-            <span className="text-[#7b61ff]">&quot;</span>I don&apos;t just
-            build interfaces. I craft systems that think — fast, precise,
-            quietly magnetic.
-            <span className="text-[#7b61ff]">&quot;</span>
-          </p>
-        </div>
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[#0d0d16] py-28 sm:py-36"
+    >
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12">
+        <SectionMarker
+          number="01"
+          label="PHILOSOPHY"
+          subtitle="THE ALCHEMIST'S PATH"
+          labelClassName="text-text-muted"
+          subtitleClassName="text-accent-light"
+        />
 
-        <div
-          className="relative hidden w-px bg-border lg:block"
-          aria-hidden="true"
-        >
-          <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rotate-45 border border-[#7b61ff]" />
-        </div>
+        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,465px)_48px_minmax(0,568px)] lg:gap-0 lg:gap-x-12">
+          <figure
+            ref={quoteRef}
+            className="reveal relative overflow-hidden rounded-xl border border-white/5 bg-surface p-8 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.8)] sm:p-10"
+          >
+            <div
+              className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-teal/70 via-accent-light/40 to-transparent"
+              aria-hidden="true"
+            />
+            <blockquote className="font-display text-2xl leading-[1.38] font-medium text-accent-light sm:text-[28px]">
+              &ldquo;Code is trivial. Building experiences that anticipate human
+              intention, feel immediate, and endure scale — that&apos;s the
+              alchemy.&rdquo;
+            </blockquote>
+          </figure>
 
-        <div
-          ref={bodyRef}
-          className="reveal lg:pl-10"
-          style={{ "--reveal-delay": "120ms" } as CSSProperties}
-        >
-          <p className="text-base leading-[1.7] text-[#8b89a8]">
-            I&apos;m a frontend engineer who thinks like a product owner. For 4
-            years I&apos;ve shipped real, high-impact web apps across
-            e-commerce, healthcare, and strategy platforms — from checkout flows
-            and payment rails to enterprise-scale dashboards.
-          </p>
-          <p className="mt-5 text-base leading-[1.7] text-[#8b89a8]">
-            I turn complex ideas into interfaces that feel obvious, working
-            shoulder-to-shoulder with design, product, and backend teams. The
-            best UI is the part nobody has to think about.
-          </p>
-
-          <div className="mt-8 flex items-center gap-5">
-            <a
-              href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 text-sm text-[#f0eef8] transition-colors hover:text-[#7b61ff]"
-            >
-              <MailIcon className="size-4" />
-              Email
-            </a>
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-[#f0eef8] transition-colors hover:text-[#7b61ff]"
-            >
-              <GithubIcon className="size-4" />
-              GitHub
-            </a>
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-[#f0eef8] transition-colors hover:text-[#7b61ff]"
-            >
-              <LinkedinIcon className="size-4" />
-              LinkedIn
-            </a>
+          <div
+            className="relative hidden flex-col items-center lg:flex"
+            aria-hidden="true"
+          >
+            <div className="w-px flex-1 bg-gradient-to-b from-transparent to-accent-light/50" />
+            <div className="my-5 size-4 rotate-45 rounded-[2px] bg-accent-light/15 ring-1 ring-accent-light/60" />
+            <div className="w-px flex-1 bg-gradient-to-b from-accent-light/50 to-transparent" />
           </div>
-        </div>
-      </div>
 
-      <div className="mx-auto mt-24 w-full max-w-screen-lg px-5 sm:px-8">
-        <div
-          ref={timelineRef}
-          className="grid grid-cols-1 gap-px overflow-hidden border border-border bg-border md:grid-cols-3"
-        >
-          {experience.map((job, index) => (
-            <article
-              key={job.company}
-              className="reveal flex flex-col bg-[#0f0f1a] p-6"
-              style={{ "--reveal-delay": `${index * 120}ms` } as CSSProperties}
-            >
-              <p className="font-mono text-[11px] tracking-[0.15em] text-[#4a4866] uppercase">
-                {job.period}
-              </p>
-              <h3 className="mt-3 font-display text-xl font-bold">
-                {job.company}
-              </h3>
-              <p className="mt-1 font-mono text-xs tracking-[0.15em] text-[#7b61ff] uppercase">
-                {job.role}
-              </p>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-[#8b89a8]">
-                {job.summary}
-              </p>
-            </article>
-          ))}
+          <div ref={narrativeRef} className="reveal">
+            <p className="text-lg leading-[1.625] text-foreground">
+              I am a Frontend Engineer based in Cairo, acting as the structural
+              bridge between rigorous software engineering and high-fidelity
+              interaction design. My day-to-day focuses on deep component
+              architecture, WebGL graphics, and performance profiling.
+            </p>
+            <p className="mt-6 text-base leading-[1.625] text-text-secondary">
+              Rather than simply handing off mockups into static code, I
+              approach frontend as an operating system layer: reactive state
+              graphs, sub-millisecond DOM reconciliation, and fluid spatial
+              interfaces that feel tactile beneath user inputs. Backed by 4+
+              years in production and a 20+ tool arsenal, I have architected
+              systems processing real-time telemetry streams and 8+ shipped
+              projects relied on by distributed teams globally.
+            </p>
+          </div>
         </div>
       </div>
     </section>

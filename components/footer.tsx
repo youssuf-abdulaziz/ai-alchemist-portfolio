@@ -3,7 +3,7 @@ import { contact, profile } from "@/core/profile"
 const socialLinks = [
   { label: "GitHub", href: contact.github, external: true },
   { label: "LinkedIn", href: contact.linkedin, external: true },
-  { label: "X", href: "https://x.com", external: true },
+  { label: "X", href: contact.x, external: true },
   { label: "Email", href: `mailto:${contact.email}`, external: false },
 ] as const
 

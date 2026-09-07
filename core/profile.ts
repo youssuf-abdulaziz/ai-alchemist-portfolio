@@ -2,23 +2,21 @@ export const profile = {
   name: "Youssef Abdulaziz",
   monogram: "YA",
   role: "Frontend Engineer",
-  ruleLabel: "FRONTEND ENGINEER",
-  tagline: "A Frontend Engineer building scalable, high-impact web apps.",
-  heroHeadline: ["Crafting Interfaces", "That Think."],
-  heroSubtext:
-    "Vue · React · TypeScript · Product Ownership · 4 years shipping things that matter.",
+  ruleLabel: "— FRONTEND DEVELOPER & PRODUCT THINKER",
+  tagline:
+    "Vue · React · TypeScript · Product Ownership · 4+ years shipping digital products that endure scale and delight users.",
+  heroHeadline: ["Crafting", "Interfaces", "That Think."],
   heroRule: "— Frontend Developer & Product Thinker",
   heroCtas: [
     { label: "View Work", href: "#work", variant: "filled" as const },
-    { label: "Contact Me", href: "#contact", variant: "ghost" as const },
+    { label: "Initiate Contact", href: "#contact", variant: "ghost" as const },
+  ],
+  heroMetrics: [
+    { value: "+40", label: "Projects & Platforms", tone: "default" as const },
+    { value: "90%", label: "Build Speedup", tone: "teal" as const },
+    { value: "+20", label: "Tools Mastered", tone: "accent-light" as const },
   ],
 } as const
-
-export const stats = [
-  { value: 4, prefix: "+", label: "Years of Experience" },
-  { value: 20, prefix: "+", label: "Development Tools" },
-  { value: 8, prefix: "+", label: "Projects Completed" },
-] as const
 
 export const experience = [
   {
@@ -69,7 +67,7 @@ export const skillClusters = [
     skills: ["NestJS", "Supabase", "Prisma", "PostgreSQL"],
   },
   {
-    label: "Tooling",
+    label: "Tooling & Workflow",
     skills: [
       "Turborepo",
       "pnpm",
@@ -109,6 +107,15 @@ export const projects = [
     href: "https://impactor.sa",
     featured: false,
   },
+  {
+    name: "Anma",
+    tagline: "E-Learning Platform.",
+    stack: ["Vue", "Nuxt", "Vue Router"],
+    status: "Shipped" as const,
+    href: "https://anma.edu.sa",
+    featured: false,
+    fullWidth: true,
+  },
 ] as const
 
 export const toolClusters = [
@@ -124,6 +131,7 @@ export const contact = {
   email: "youssufabdulaziz@gmail.com",
   github: "https://github.com/youssuf-abdulaziz",
   linkedin: "https://www.linkedin.com/in/youssef-abdulaziz",
+  x: "https://x.com/SEM1COLON_",
 } as const
 
 export const navLinks = [
