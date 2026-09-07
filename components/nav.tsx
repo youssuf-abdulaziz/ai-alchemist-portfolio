@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { MessageSquare } from "lucide-react"
+import { Menu, MessageSquare, X } from "lucide-react"
 
 import { contact, navLinks, profile } from "@/core/profile"
 import { cn } from "@/lib/utils"
@@ -11,6 +11,7 @@ const sectionIds = ["work", "about", "stack", "contact"]
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState<string | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -94,6 +95,15 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-divider bg-surface text-foreground transition-colors hover:border-accent-light/40 lg:hidden"
+          >
+            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
           <span
             className="inline-flex items-center gap-2 rounded-full bg-surface px-3 py-1.5 sm:px-4 sm:py-2"
             aria-hidden="true"
@@ -118,6 +128,34 @@ export function Nav() {
           </a>
         </div>
       </nav>
+
+      {menuOpen ? (
+        <nav
+          className="border-t border-border bg-background/90 backdrop-blur-2xl lg:hidden"
+          aria-label="Mobile"
+        >
+          <div className="mx-auto flex flex-col gap-1 px-5 py-4 sm:px-8">
+            {navLinks.map((link) => {
+              const isActive = active === link.href.slice(1)
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={cn(
+                    "rounded-lg px-3 py-3 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-[#917eff] text-[#28008a]"
+                      : "text-text-light hover:text-foreground"
+                  )}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
+          </div>
+        </nav>
+      ) : null}
     </header>
   )
 }
