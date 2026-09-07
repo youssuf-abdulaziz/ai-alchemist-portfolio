@@ -14,11 +14,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Commands
 
 ```bash
-yarn dev          # dev server
-yarn build        # production build
-yarn lint         # eslint (flat config, eslint-config-next)
-yarn typecheck    # tsc --noEmit
-yarn format       # prettier --write **/*.{ts,tsx}
+npm run dev        # dev server
+npm run build      # production build
+npm run lint       # eslint (flat config, eslint-config-next)
+npm run typecheck  # tsc --noEmit
+npm run format     # prettier --write **/*.{ts,tsx}
 ```
 
 No test framework is configured. There are no tests.
@@ -26,17 +26,18 @@ No test framework is configured. There are no tests.
 ## Code style
 
 - Prettier: no semicolons, double quotes, 2-space indent, trailing commas `es5`.
-- Tailwind class sorting via `prettier-plugin-tailwindcss` — run `yarn format` after large edits.
-- `suppressHydrationWarning` is set on `<html>` for `next-themes` — do not remove.
-- Theme toggles on `d` keypress (implemented in `components/theme-provider.tsx`).
+- Tailwind class sorting via `prettier-plugin-tailwindcss` — run `npm run format` after large edits.
+- `suppressHydrationWarning` is set on `<html>` — do not remove.
+- The portfolio is dark-only; there is no theme toggle or `next-themes`.
 
 ## Structure
 
 ```
 app/              # Next.js App Router — pages and layouts
-components/ui/    # shadcn/ui components (add via `npx shadcn@latest add`)
+components/       # nav, shared components, ui/, and sections/
+core/             # profile data + font definitions
+hooks/            # custom React hooks (use-reveal, etc.)
 lib/utils.ts      # cn() re-export
-hooks/            # custom React hooks (empty)
 public/           # static assets
 ```
 
