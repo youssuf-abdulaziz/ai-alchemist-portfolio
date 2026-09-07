@@ -91,10 +91,6 @@ export function Contact() {
             LinkedIn
           </a>
         </div>
-
-        <footer className="mt-24 w-full border-t border-border pt-8 font-mono text-[11px] tracking-[0.15em] text-[#4a4866] uppercase">
-          © {new Date().getFullYear()} Youssef Abdulaziz — crafted with intent
-        </footer>
       </div>
     </section>
   )
